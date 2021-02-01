@@ -69,9 +69,9 @@ void main() {
             .thenReturn(Left(InvalidInputFailure()));
         // assert later
         final expected = [
-          Empty(),
           Error(message: INVALID_INPUT_FAILURE_MESSAGE),
         ];
+        expect(bloc.state, Empty());  
         expectLater(bloc, emitsInOrder(expected));
         // act
         bloc.add(GetTriviaForConcreteNumber(tNumberString));
@@ -102,10 +102,10 @@ void main() {
             .thenAnswer((_) async => Right(tNumberTrivia));
         // assert later
         final expected = [
-          Empty(),
           Loading(),
           Loaded(trivia: tNumberTrivia),
         ];
+        expect(bloc.state, Empty());  
         expectLater(bloc, emitsInOrder(expected));
         // act
         bloc.add(GetTriviaForConcreteNumber(tNumberString));
@@ -121,10 +121,10 @@ void main() {
             .thenAnswer((_) async => Left(ServerFailure()));
         // assert later
         final expected = [
-          Empty(),
           Loading(),
           Error(message: SERVER_FAILURE_MESSAGE),
         ];
+        expect(bloc.state, Empty());  
         expectLater(bloc, emitsInOrder(expected));
         // act
         bloc.add(GetTriviaForConcreteNumber(tNumberString));
@@ -140,10 +140,10 @@ void main() {
             .thenAnswer((_) async => Left(CacheFailure()));
         // assert later
         final expected = [
-          Empty(),
           Loading(),
           Error(message: CACHE_FAILURE_MESSAGE),
         ];
+        expect(bloc.state, Empty());  
         expectLater(bloc, emitsInOrder(expected));
         // act
         bloc.add(GetTriviaForConcreteNumber(tNumberString));
@@ -176,10 +176,10 @@ void main() {
             .thenAnswer((_) async => Right(tNumberTrivia));
         // assert later
         final expected = [
-          Empty(),
           Loading(),
           Loaded(trivia: tNumberTrivia),
         ];
+        expect(bloc.state, Empty());  
         expectLater(bloc, emitsInOrder(expected));
         // act
         bloc.add(GetTriviaForRandomNumber());
@@ -194,10 +194,10 @@ void main() {
             .thenAnswer((_) async => Left(ServerFailure()));
         // assert later
         final expected = [
-          Empty(),
           Loading(),
           Error(message: SERVER_FAILURE_MESSAGE),
         ];
+        expect(bloc.state, Empty());  
         expectLater(bloc, emitsInOrder(expected));
         // act
         bloc.add(GetTriviaForRandomNumber());
@@ -212,10 +212,10 @@ void main() {
             .thenAnswer((_) async => Left(CacheFailure()));
         // assert later
         final expected = [
-          Empty(),
           Loading(),
           Error(message: CACHE_FAILURE_MESSAGE),
         ];
+        expect(bloc.state, Empty());  
         expectLater(bloc, emitsInOrder(expected));
         // act
         bloc.add(GetTriviaForRandomNumber());
